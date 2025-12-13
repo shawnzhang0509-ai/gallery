@@ -1,7 +1,0 @@
-{
-  "name": "Lumina Gallery",
-  "description": "A smart, AI-powered photo gallery. Upload photos for instant AI analysis and tagging, or generate stunning new portraits using Gemini.",
-  "requestFramePermissions": [
-    "camera"
-  ]
-}
