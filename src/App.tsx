@@ -1,33 +1,37 @@
-// src/App.tsx —— 静态精简版（保留原 UI 美感）
+// src/App.tsx（基于老代码，仅修改数据部分）
+
 import React from 'react';
 import { MasonryGrid } from './components/MasonryGrid';
 import { Photo } from './types';
 
-// ✏️ 在这里配置你的静态图片
+// ✅ 静态图片列表（放在 public/images/）
 const STATIC_PHOTOS: Photo[] = [
   {
     id: '1',
     url: '/images/01.jpg',
-    description: 'Your photo description here',
-    tags: ['your', 'tags'],
+    description: 'Your photo 1',
+    tags: ['photo'],
     source: 'static',
     createdAt: Date.now()
   },
   {
     id: '2',
     url: '/images/02.jpg',
-    description: 'Another beautiful shot',
-    tags: ['photo', 'art'],
+    description: 'Your photo 2',
+    tags: ['art'],
     source: 'static',
     createdAt: Date.now() - 1000
   },
-  // ➕ 添加更多图片，只需复制上面的对象并改 url
+  // ➕ 按需添加
 ];
 
 export default function App() {
+  // ❌ 移除 useState, useEffect, localStorage, modal 等逻辑
+  // ✅ 直接渲染静态数据
+
   return (
     <div className="min-h-screen bg-dark-bg text-dark-text font-sans">
-      {/* Header（简化版，只留 Logo） */}
+      {/* Header（保留原样） */}
       <header className="sticky top-0 z-40 bg-dark-bg/80 backdrop-blur-lg border-b border-slate-800">
         <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center">
           <div className="flex items-center gap-2">
@@ -49,7 +53,7 @@ export default function App() {
       <main className="pt-8 pb-16">
         <MasonryGrid 
           photos={STATIC_PHOTOS} 
-          onPhotoClick={() => {}} // 点击无反应（或可加 alert）
+          onPhotoClick={() => {}} // 点击无反应（或可加 console.log）
         />
       </main>
     </div>
