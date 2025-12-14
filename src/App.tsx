@@ -8,7 +8,7 @@ import { Photo } from './types';
 const STATIC_PHOTOS: Photo[] = [
   {
     id: '1',
-    url: '/images/01.jpg',
+    url: 'Villa1.jpg',
     description: 'Your photo 1',
     tags: ['photo'],
     source: 'static',
@@ -16,7 +16,23 @@ const STATIC_PHOTOS: Photo[] = [
   },
   {
     id: '2',
-    url: '/images/02.jpg',
+    url: 'Villa2.jpg',
+    description: 'Your photo 2',
+    tags: ['art'],
+    source: 'static',
+    createdAt: Date.now() - 1000
+  },
+  {
+    id: '3',
+    url: 'Villa3.jpg',
+    description: 'Your photo 2',
+    tags: ['art'],
+    source: 'static',
+    createdAt: Date.now() - 1000
+  },
+  {
+    id: '4',
+    url: 'Villa4.jpg',
     description: 'Your photo 2',
     tags: ['art'],
     source: 'static',
