@@ -2,9 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>TEST</title>
+    <title>JS TEST</title>
   </head>
   <body>
-    <h1 style="color:red">HTML IS LOADING</h1>
+    <h1 style="color:red">HTML OK</h1>
+
+    <script>
+      document.body.insertAdjacentHTML(
+        'beforeend',
+        '<h2 style="color:blue">JS IS EXECUTING</h2>'
+      );
+    </script>
   </body>
 </html>
