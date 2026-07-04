@@ -20,6 +20,7 @@ export const PhotoCard: React.FC<PhotoCardProps> = ({ photo, onClick }) => {
         src={displayUrl}
         alt={photo.title}
         blurFaces={photo.blurFaces}
+        faceRegions={photo.faceRegions}
         className="w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
       />
 

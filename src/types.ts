@@ -14,6 +14,16 @@ export interface Photo {
   lens?: string;
   /** 自动检测并模糊人脸，保护隐私 */
   blurFaces?: boolean;
+  /** 手动指定模糊区域（百分比），比自动检测更精准 */
+  faceRegions?: FaceRegion[];
+}
+
+/** 人脸模糊区域，数值为相对图片宽高的百分比 */
+export interface FaceRegion {
+  left: number;
+  top: number;
+  width: number;
+  height: number;
 }
 
 export type PhotoCategory = '全部' | string;

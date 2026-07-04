@@ -6,7 +6,7 @@ const R2_BASE = 'https://pub-8d44826f329546d3945b9abda7ca5ab0.r2.dev';
  * 摄影作品列表
  *
  * 添加新作品：复制下方对象，把 `url` 换成你的 Cloudflare 链接即可。
- * 人像照片建议设置 blurFaces: true 以自动模糊人脸。
+ * 人像照片建议设置 blurFaces: true，并用 faceRegions 标定模糊区域。
  */
 export const photos: Photo[] = [
   // ── Emma 系列（Cloudflare R2）──
@@ -17,6 +17,7 @@ export const photos: Photo[] = [
     tags: ['人像', 'Emma'],
     takenAt: '2025-07-05',
     blurFaces: true,
+    faceRegions: [{ left: 53.8, top: 20.1, width: 18.2, height: 18.2 }],
   },
   {
     id: 'emma-3842',
@@ -25,6 +26,7 @@ export const photos: Photo[] = [
     tags: ['人像', 'Emma'],
     takenAt: '2025-07-05',
     blurFaces: true,
+    faceRegions: [{ left: 43.1, top: 15.8, width: 16.8, height: 16.8 }],
   },
   {
     id: 'emma-3867',
@@ -33,6 +35,7 @@ export const photos: Photo[] = [
     tags: ['人像', 'Emma'],
     takenAt: '2025-07-05',
     blurFaces: true,
+    faceRegions: [{ left: 18, top: 20.7, width: 16.3, height: 16.3 }],
   },
   {
     id: 'emma-3879',
@@ -41,6 +44,7 @@ export const photos: Photo[] = [
     tags: ['人像', 'Emma'],
     takenAt: '2025-07-05',
     blurFaces: true,
+    faceRegions: [{ left: 20.4, top: 21.4, width: 19.7, height: 19.7 }],
   },
   {
     id: 'emma-3911',
@@ -49,6 +53,7 @@ export const photos: Photo[] = [
     tags: ['人像', 'Emma'],
     takenAt: '2025-07-05',
     blurFaces: true,
+    faceRegions: [{ left: 76.2, top: 44, width: 15.7, height: 15.7 }],
   },
   {
     id: 'emma-3922',
@@ -57,6 +62,7 @@ export const photos: Photo[] = [
     tags: ['人像', 'Emma'],
     takenAt: '2025-07-05',
     blurFaces: true,
+    faceRegions: [{ left: 69.5, top: 39.1, width: 17.7, height: 17.7 }],
   },
   {
     id: 'emma-3993',
@@ -65,6 +71,7 @@ export const photos: Photo[] = [
     tags: ['人像', 'Emma'],
     takenAt: '2025-07-05',
     blurFaces: true,
+    faceRegions: [{ left: 25.2, top: 12, width: 30.8, height: 30.8 }],
   },
 
   // ── 建筑系列（本地样片）──
