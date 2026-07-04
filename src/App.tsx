@@ -1,77 +1,72 @@
-// src/App.tsx（基于老代码，仅修改数据部分）
-
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { MasonryGrid } from './components/MasonryGrid';
-import { Photo } from './types';
+import { GalleryHeader } from './components/GalleryHeader';
+import { CategoryFilter } from './components/CategoryFilter';
+import { ImageViewer } from './components/ImageViewer';
+import { photos as allPhotos } from './data/photos';
+import { siteConfig } from './config/site';
+import { Photo, PhotoCategory } from './types';
 
-// ✅ 静态图片列表（放在 public/images/）
-const STATIC_PHOTOS: Photo[] = [
-  {
-    id: '1',
-    url: '/images/Villa1.jpg',
-    description: 'Your photo 1',
-    tags: ['photo'],
-    source: 'static',
-    createdAt: Date.now()
-  },
-  {
-    id: '2',
-    url: '/images/Villa2.jpg',
-    description: 'Your photo 2',
-    tags: ['art'],
-    source: 'static',
-    createdAt: Date.now() - 1000
-  },
-  {
-    id: '3',
-    url: '/images/Villa3.jpg',
-    description: 'Your photo 2',
-    tags: ['art'],
-    source: 'static',
-    createdAt: Date.now() - 1000
-  },
-  {
-    id: '4',
-    url: '/images/Villa4.jpg',
-    description: 'Your photo 2',
-    tags: ['art'],
-    source: 'static',
-    createdAt: Date.now() - 1000
-  },
-  // ➕ 按需添加
-];
+function collectCategories(photos: Photo[]): PhotoCategory[] {
+  const tagSet = new Set<string>();
+  photos.forEach((photo) => photo.tags.forEach((tag) => tagSet.add(tag)));
+  return ['全部', ...Array.from(tagSet).sort((a, b) => a.localeCompare(b, 'zh-CN'))];
+}
 
 export default function App() {
-  // ❌ 移除 useState, useEffect, localStorage, modal 等逻辑
-  // ✅ 直接渲染静态数据
+  const [activeCategory, setActiveCategory] = useState<PhotoCategory>('全部');
+  const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
+
+  const categories = useMemo(() => collectCategories(allPhotos), []);
+
+  const filteredPhotos = useMemo(() => {
+    if (activeCategory === '全部') return allPhotos;
+    return allPhotos.filter((photo) => photo.tags.includes(activeCategory));
+  }, [activeCategory]);
 
   return (
-    <div className="min-h-screen bg-dark-bg text-dark-text font-sans">
-      {/* Header（保留原样） */}
-      <header className="sticky top-0 z-40 bg-dark-bg/80 backdrop-blur-lg border-b border-slate-800">
-        <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center">
-          <div className="flex items-center gap-2">
-            <div className="bg-gradient-to-tr from-brand-600 to-purple-600 p-2 rounded-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="m15 9-6 6"></path>
-                <path d="m9 9 6 6"></path>
-              </svg>
-            </div>
-            <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
-              Lumina
-            </span>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen bg-ink text-stone-200">
+      <GalleryHeader />
 
-      {/* Main Content */}
-      <main className="pt-8 pb-16">
-        <MasonryGrid 
-          photos={STATIC_PHOTOS} 
-          onPhotoClick={() => {}} // 点击无反应（或可加 console.log）
-        />
+      <main className="mx-auto max-w-7xl px-4 pb-20 pt-10 sm:px-6 lg:px-8">
+        <section className="mb-12 text-center">
+          <p className="text-xs uppercase tracking-[0.35em] text-amber-500/80">Portfolio</p>
+          <h1 className="mt-3 text-3xl font-light tracking-wide text-stone-100 sm:text-4xl">
+            {siteConfig.title}
+          </h1>
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-stone-400 sm:text-base">
+            {siteConfig.description}
+          </p>
+          <p className="mt-2 text-xs text-stone-600">
+            共 {allPhotos.length} 幅作品
+          </p>
+        </section>
+
+        {categories.length > 1 && (
+          <section className="mb-10">
+            <CategoryFilter
+              categories={categories}
+              active={activeCategory}
+              onChange={setActiveCategory}
+            />
+          </section>
+        )}
+
+        <MasonryGrid photos={filteredPhotos} onPhotoClick={setSelectedPhoto} />
       </main>
+
+      <footer className="border-t border-stone-800/80 py-10">
+        <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+          <p className="text-sm leading-relaxed text-stone-500">{siteConfig.about}</p>
+          <p className="mt-4 text-xs text-stone-600">
+            © {new Date().getFullYear()} {siteConfig.author}
+          </p>
+        </div>
+      </footer>
+
+      {selectedPhoto && (
+        <ImageViewer photo={selectedPhoto} onClose={() => setSelectedPhoto(null)} />
+      )}
     </div>
   );
 }
