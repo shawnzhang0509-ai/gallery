@@ -1,18 +1,73 @@
 import { Photo } from '../types';
 
+const R2_BASE = 'https://pub-8d44826f329546d3945b9abda7ca5ab0.r2.dev';
+
 /**
  * 摄影作品列表
  *
  * 添加新作品：复制下方对象，把 `url` 换成你的 Cloudflare 链接即可。
- *
- * Cloudflare R2 公开桶示例：
- *   url: 'https://pub-xxxx.r2.dev/photos/sunset.jpg'
- *
- * Cloudflare Images 示例：
- *   url: 'https://imagedelivery.net/<HASH>/<IMAGE_ID>/public'
- *   thumbnailUrl: 'https://imagedelivery.net/<HASH>/<IMAGE_ID>/thumbnail'
+ * 人像照片建议设置 blurFaces: true 以自动模糊人脸。
  */
 export const photos: Photo[] = [
+  // ── Emma 系列（Cloudflare R2）──
+  {
+    id: 'emma-3839',
+    url: `${R2_BASE}/Emma/IMG_3839.jpg`,
+    title: 'Emma · I',
+    tags: ['人像', 'Emma'],
+    takenAt: '2025-07-05',
+    blurFaces: true,
+  },
+  {
+    id: 'emma-3842',
+    url: `${R2_BASE}/Emma/IMG_3842.jpg`,
+    title: 'Emma · II',
+    tags: ['人像', 'Emma'],
+    takenAt: '2025-07-05',
+    blurFaces: true,
+  },
+  {
+    id: 'emma-3867',
+    url: `${R2_BASE}/Emma/IMG_3867.jpg`,
+    title: 'Emma · III',
+    tags: ['人像', 'Emma'],
+    takenAt: '2025-07-05',
+    blurFaces: true,
+  },
+  {
+    id: 'emma-3879',
+    url: `${R2_BASE}/Emma/IMG_3879.jpg`,
+    title: 'Emma · IV',
+    tags: ['人像', 'Emma'],
+    takenAt: '2025-07-05',
+    blurFaces: true,
+  },
+  {
+    id: 'emma-3911',
+    url: `${R2_BASE}/Emma/IMG_3911.jpg`,
+    title: 'Emma · V',
+    tags: ['人像', 'Emma'],
+    takenAt: '2025-07-05',
+    blurFaces: true,
+  },
+  {
+    id: 'emma-3922',
+    url: `${R2_BASE}/Emma/IMG_3922.jpg`,
+    title: 'Emma · VI',
+    tags: ['人像', 'Emma'],
+    takenAt: '2025-07-05',
+    blurFaces: true,
+  },
+  {
+    id: 'emma-3993',
+    url: `${R2_BASE}/Emma/IMG_3993(1).jpg`,
+    title: 'Emma · VII',
+    tags: ['人像', 'Emma'],
+    takenAt: '2025-07-05',
+    blurFaces: true,
+  },
+
+  // ── 建筑系列（本地样片）──
   {
     id: 'villa-01',
     url: '/images/Villa1.jpg',
@@ -53,17 +108,4 @@ export const photos: Photo[] = [
     takenAt: '2025-03-13',
     camera: 'Sony A7C',
   },
-
-  // ── 在此下方继续添加 Cloudflare 作品 ──
-  // {
-  //   id: 'cf-001',
-  //   url: 'https://imagedelivery.net/你的HASH/图片ID/public',
-  //   thumbnailUrl: 'https://imagedelivery.net/你的HASH/图片ID/thumbnail',
-  //   title: '作品标题',
-  //   description: '一句话描述',
-  //   location: '拍摄地点',
-  //   tags: ['风光', '旅行'],
-  //   takenAt: '2025-07-01',
-  //   camera: '相机型号',
-  // },
 ];

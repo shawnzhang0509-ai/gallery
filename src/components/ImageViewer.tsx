@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Calendar, Camera, MapPin, X } from 'lucide-react';
 import { Photo } from '../types';
+import { FaceBlurImage } from './FaceBlurImage';
 
 interface ImageViewerProps {
   photo: Photo;
@@ -39,9 +40,12 @@ export const ImageViewer: React.FC<ImageViewerProps> = ({ photo, onClose }) => {
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex min-h-0 flex-1 items-center justify-center">
-          <img
+          <FaceBlurImage
             src={photo.url}
             alt={photo.title}
+            blurFaces={photo.blurFaces}
+            loading="eager"
+            wrapperClassName="inline-block max-w-full"
             className="max-h-[70vh] max-w-full object-contain lg:max-h-[85vh]"
           />
         </div>

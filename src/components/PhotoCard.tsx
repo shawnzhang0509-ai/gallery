@@ -1,6 +1,7 @@
 import React from 'react';
 import { Photo } from '../types';
 import { MapPin } from 'lucide-react';
+import { FaceBlurImage } from './FaceBlurImage';
 
 interface PhotoCardProps {
   photo: Photo;
@@ -15,11 +16,11 @@ export const PhotoCard: React.FC<PhotoCardProps> = ({ photo, onClick }) => {
       className="group relative mb-5 cursor-pointer break-inside-avoid overflow-hidden rounded-sm bg-stone-900"
       onClick={() => onClick(photo)}
     >
-      <img
+      <FaceBlurImage
         src={displayUrl}
         alt={photo.title}
+        blurFaces={photo.blurFaces}
         className="w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-        loading="lazy"
       />
 
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />

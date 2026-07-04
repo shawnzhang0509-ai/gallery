@@ -12,6 +12,8 @@ export interface Photo {
   takenAt?: string;
   camera?: string;
   lens?: string;
+  /** 自动检测并模糊人脸，保护隐私 */
+  blurFaces?: boolean;
 }
 
 export type PhotoCategory = '全部' | string;
