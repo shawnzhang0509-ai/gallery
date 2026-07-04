@@ -1,6 +1,6 @@
 import React from 'react';
 import { Photo } from '../types';
-import { Download, Sparkles, Tag, ZoomIn } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 
 interface PhotoCardProps {
   photo: Photo;
@@ -8,46 +8,43 @@ interface PhotoCardProps {
 }
 
 export const PhotoCard: React.FC<PhotoCardProps> = ({ photo, onClick }) => {
+  const displayUrl = photo.thumbnailUrl || photo.url;
+
   return (
-    <div 
-      className="group relative break-inside-avoid mb-6 rounded-xl overflow-hidden bg-dark-card border border-slate-800 hover:border-brand-500/50 transition-all duration-300 shadow-xl cursor-pointer"
+    <article
+      className="group relative mb-5 cursor-pointer break-inside-avoid overflow-hidden rounded-sm bg-stone-900"
       onClick={() => onClick(photo)}
     >
-      <div className="relative overflow-hidden aspect-auto">
-        <img 
-          src={photo.url} 
-          alt={photo.description || 'Gallery image'} 
-          className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
-          loading="lazy"
-        />
-        
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-          <p className="text-white text-sm line-clamp-2 font-light mb-2">
-            {photo.description || 'No description available'}
+      <img
+        src={displayUrl}
+        alt={photo.title}
+        className="w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+        loading="lazy"
+      />
+
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-2 p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+        <h3 className="text-sm font-medium text-white">{photo.title}</h3>
+        {photo.location && (
+          <p className="mt-1 flex items-center gap-1 text-xs text-stone-300">
+            <MapPin size={11} />
+            {photo.location}
           </p>
-          
-          <div className="flex flex-wrap gap-1 mb-3">
-            {photo.tags.slice(0, 3).map(tag => (
-              <span key={tag} className="text-[10px] px-2 py-0.5 rounded-full bg-white/20 text-white backdrop-blur-sm">
-                #{tag}
+        )}
+        {photo.tags.length > 0 && (
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            {photo.tags.slice(0, 3).map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full bg-white/10 px-2 py-0.5 text-[10px] text-stone-200 backdrop-blur-sm"
+              >
+                {tag}
               </span>
             ))}
           </div>
-
-          <div className="flex items-center justify-between mt-1">
-            <span className="text-[10px] text-slate-400 uppercase tracking-wider flex items-center gap-1">
-               {photo.source === 'generated' ? <Sparkles size={10} className="text-brand-400" /> : <Tag size={10} />}
-               {photo.source}
-            </span>
-            <div className="flex gap-2">
-               <button className="p-1.5 rounded-full bg-white/20 hover:bg-white/40 text-white transition-colors">
-                  <ZoomIn size={14} />
-               </button>
-            </div>
-          </div>
-        </div>
+        )}
       </div>
-    </div>
+    </article>
   );
 };
