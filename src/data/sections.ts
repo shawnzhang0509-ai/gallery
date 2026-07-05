@@ -7,8 +7,6 @@ export const gallerySections: GallerySectionConfig[] = [
     model: 'emma',
     title: 'Emma',
     subtitle: '自然光人像 · 窗边与室内的私密片刻',
-    blurFaces: true,
-    privacyMask: 'pixelate',
   },
   {
     id: 'section-maya',
