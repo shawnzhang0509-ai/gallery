@@ -190,6 +190,19 @@ export const photos: Photo[] = [
     takenAt: '2025-07-05',
   })),
 
+  // ── Akari 系列（Cloudflare R2）──
+  ...[
+    'IMG_5286', 'IMG_5292', 'IMG_5299', 'IMG_5305',
+    'IMG_5327', 'IMG_5328', 'IMG_5343', 'IMG_5350',
+  ].map((filename, index) => ({
+    id: `akari-${filename.replace('IMG_', '')}`,
+    model: 'akari' as const,
+    url: `${R2_BASE}/Akari/${filename}.jpg`,
+    title: `Akari · ${toRoman(index + 1)}`,
+    tags: ['人像'],
+    takenAt: '2025-07-05',
+  })),
+
   // ── 建筑与风景系列 ──
   {
     id: 'villa-01',

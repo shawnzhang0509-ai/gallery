@@ -35,6 +35,12 @@ export const gallerySections: GallerySectionConfig[] = [
     subtitle: '人像摄影 · 光影与姿态',
   },
   {
+    id: 'section-akari',
+    model: 'akari',
+    title: 'Akari',
+    subtitle: '人像摄影 · 光影与情绪',
+  },
+  {
     id: 'section-architecture',
     model: 'architecture',
     title: '建筑与风景',
