@@ -114,6 +114,35 @@ export const photos: Photo[] = [
     takenAt: '2025-08-16',
   })),
 
+  // ── Aria 系列（Cloudflare R2）──
+  ...[
+    '3f4e2d0417b72520bbf1f9a943393c4.jpg',
+    '759785074c4f6a6dde7965b7850c9af.jpg',
+    '9ef5138761737716206d526d948f062.jpg',
+    'IMG_2726.JPG',
+    'IMG_2732.JPG',
+    'IMG_2755.JPG',
+    'IMG_2783.JPG',
+    'IMG_2791.JPG',
+    'IMG_2805.JPG',
+    'IMG_2837.JPG',
+    'IMG_2858.JPG',
+    'IMG_2913.JPG',
+    'a4af9300d85440e51e876fdd7ef26e8.jpg',
+    'a993d814df1229f7d86c6f46b9acc01.jpg',
+    'beadba926a80acc7ae71ecceb0fb707.jpg',
+    'c423a997063fd3a18dfd6e6e20091a6.jpg',
+    'de0b5b8cd671c8c92af262c4dc45c8b.jpg',
+    'eca10b190b2388c08ba9b9f61c2abe3.jpg',
+  ].map((filename, index) => ({
+    id: `aria-${filename.replace(/\.(jpg|JPG)$/i, '').toLowerCase()}`,
+    model: 'aria' as const,
+    url: `${R2_BASE}/Aria/${filename}`,
+    title: `Aria · ${toRoman(index + 1)}`,
+    tags: ['人像'],
+    takenAt: '2025-07-05',
+  })),
+
   // ── 建筑与风景系列 ──
   {
     id: 'villa-01',
