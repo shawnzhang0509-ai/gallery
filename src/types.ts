@@ -1,5 +1,7 @@
 export interface Photo {
   id: string;
+  /** 所属模特 / 主题分组 */
+  model: string;
   /** 原图 URL — 支持 Cloudflare R2 / Images 等外链 */
   url: string;
   /** 缩略图（可选，Cloudflare Images 可填 /public 变体） */
@@ -26,4 +28,13 @@ export interface FaceRegion {
   height: number;
 }
 
-export type PhotoCategory = '全部' | string;
+export interface GallerySectionConfig {
+  id: string;
+  model: string;
+  title: string;
+  subtitle: string;
+}
+
+export interface GallerySection extends GallerySectionConfig {
+  photos: Photo[];
+}

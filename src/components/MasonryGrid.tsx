@@ -12,7 +12,7 @@ export const MasonryGrid: React.FC<MasonryGridProps> = ({ photos, onPhotoClick }
     return (
       <div className="flex flex-col items-center justify-center py-24 text-stone-500">
         <p className="text-lg text-stone-400">暂无作品</p>
-        <p className="mt-2 text-sm">该分类下还没有照片，试试其他标签。</p>
+        <p className="mt-2 text-sm">该系列暂无照片。</p>
       </div>
     );
   }

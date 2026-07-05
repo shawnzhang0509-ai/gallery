@@ -3,80 +3,85 @@ import { Photo } from '../types';
 const R2_BASE = 'https://pub-8d44826f329546d3945b9abda7ca5ab0.r2.dev';
 
 /**
- * 摄影作品列表
- *
- * 添加新作品：复制下方对象，把 `url` 换成你的 Cloudflare 链接即可。
- * 人像照片建议设置 blurFaces: true，并用 faceRegions 标定模糊区域。
+ * 摄影作品列表 — 通过 model 字段归入对应 Section
  */
 export const photos: Photo[] = [
   // ── Emma 系列（Cloudflare R2）──
   {
     id: 'emma-3839',
+    model: 'emma',
     url: `${R2_BASE}/Emma/IMG_3839.jpg`,
     title: 'Emma · I',
-    tags: ['人像', 'Emma'],
+    tags: ['人像'],
     takenAt: '2025-07-05',
     blurFaces: true,
     faceRegions: [{ left: 53.8, top: 20.1, width: 18.2, height: 18.2 }],
   },
   {
     id: 'emma-3842',
+    model: 'emma',
     url: `${R2_BASE}/Emma/IMG_3842.jpg`,
     title: 'Emma · II',
-    tags: ['人像', 'Emma'],
+    tags: ['人像'],
     takenAt: '2025-07-05',
     blurFaces: true,
     faceRegions: [{ left: 43.1, top: 15.8, width: 16.8, height: 16.8 }],
   },
   {
     id: 'emma-3867',
+    model: 'emma',
     url: `${R2_BASE}/Emma/IMG_3867.jpg`,
     title: 'Emma · III',
-    tags: ['人像', 'Emma'],
+    tags: ['人像'],
     takenAt: '2025-07-05',
     blurFaces: true,
     faceRegions: [{ left: 18, top: 20.7, width: 16.3, height: 16.3 }],
   },
   {
     id: 'emma-3879',
+    model: 'emma',
     url: `${R2_BASE}/Emma/IMG_3879.jpg`,
     title: 'Emma · IV',
-    tags: ['人像', 'Emma'],
+    tags: ['人像'],
     takenAt: '2025-07-05',
     blurFaces: true,
     faceRegions: [{ left: 20.4, top: 21.4, width: 19.7, height: 19.7 }],
   },
   {
     id: 'emma-3911',
+    model: 'emma',
     url: `${R2_BASE}/Emma/IMG_3911.jpg`,
     title: 'Emma · V',
-    tags: ['人像', 'Emma'],
+    tags: ['人像'],
     takenAt: '2025-07-05',
     blurFaces: true,
     faceRegions: [{ left: 76.2, top: 44, width: 15.7, height: 15.7 }],
   },
   {
     id: 'emma-3922',
+    model: 'emma',
     url: `${R2_BASE}/Emma/IMG_3922.jpg`,
     title: 'Emma · VI',
-    tags: ['人像', 'Emma'],
+    tags: ['人像'],
     takenAt: '2025-07-05',
     blurFaces: true,
     faceRegions: [{ left: 69.5, top: 39.1, width: 17.7, height: 17.7 }],
   },
   {
     id: 'emma-3993',
+    model: 'emma',
     url: `${R2_BASE}/Emma/IMG_3993(1).jpg`,
     title: 'Emma · VII',
-    tags: ['人像', 'Emma'],
+    tags: ['人像'],
     takenAt: '2025-07-05',
     blurFaces: true,
     faceRegions: [{ left: 25.2, top: 12, width: 30.8, height: 30.8 }],
   },
 
-  // ── 建筑系列（本地样片）──
+  // ── 建筑与风景系列 ──
   {
     id: 'villa-01',
+    model: 'architecture',
     url: '/images/Villa1.jpg',
     title: '别墅光影 I',
     description: '午后斜光穿过窗棂，在墙面留下柔和的几何阴影。',
@@ -87,6 +92,7 @@ export const photos: Photo[] = [
   },
   {
     id: 'villa-02',
+    model: 'architecture',
     url: '/images/Villa2.jpg',
     title: '别墅光影 II',
     description: '庭院与室内空间的对话，静谧而克制。',
@@ -97,6 +103,7 @@ export const photos: Photo[] = [
   },
   {
     id: 'villa-03',
+    model: 'architecture',
     url: '/images/Villa3.jpg',
     title: '别墅光影 III',
     description: '线条与材质的层次，在阴天里显得格外沉静。',
@@ -107,6 +114,7 @@ export const photos: Photo[] = [
   },
   {
     id: 'villa-04',
+    model: 'architecture',
     url: '/images/Villa4.jpg',
     title: '别墅光影 IV',
     description: '傍晚时分，暖色调从室外渗入室内空间。',
