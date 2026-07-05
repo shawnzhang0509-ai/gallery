@@ -2,7 +2,13 @@ import { Photo } from '../types';
 
 const R2_BASE = 'https://pub-8d44826f329546d3945b9abda7ca5ab0.r2.dev';
 
-const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV', 'XV', 'XVI', 'XVII', 'XVIII', 'XIX', 'XX'];
+const ROMAN = [
+  'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X',
+  'XI', 'XII', 'XIII', 'XIV', 'XV', 'XVI', 'XVII', 'XVIII', 'XIX', 'XX',
+  'XXI', 'XXII', 'XXIII', 'XXIV', 'XXV', 'XXVI', 'XXVII', 'XXVIII', 'XXIX', 'XXX',
+  'XXXI', 'XXXII', 'XXXIII', 'XXXIV', 'XXXV', 'XXXVI', 'XXXVII', 'XXXVIII', 'XXXIX', 'XL',
+  'XLI', 'XLII', 'XLIII', 'XLIV', 'XLV', 'XLVI', 'XLVII', 'XLVIII', 'XLIX', 'L',
+];
 
 function toRoman(n: number): string {
   return ROMAN[n - 1] ?? String(n);
@@ -161,6 +167,25 @@ export const photos: Photo[] = [
     model: 'anika' as const,
     url: `${R2_BASE}/Anika/${filename}`,
     title: `Anika · ${toRoman(index + 1)}`,
+    tags: ['人像'],
+    takenAt: '2025-07-05',
+  })),
+
+  // ── Sana 系列（Cloudflare R2）──
+  ...[
+    'IMG_3269', 'IMG_3277', 'IMG_3288', 'IMG_3293', 'IMG_3297', 'IMG_3299',
+    'IMG_3307', 'IMG_3322', 'IMG_3328', 'IMG_3333', 'IMG_3349', 'IMG_3356',
+    'IMG_3361', 'IMG_3366', 'IMG_3374', 'IMG_3395', 'IMG_3419', 'IMG_3438',
+    'IMG_3445', 'IMG_3447', 'IMG_3455', 'IMG_3474', 'IMG_3485', 'IMG_3496',
+    'IMG_3531', 'IMG_3545', 'IMG_3564', 'IMG_3567', 'IMG_3581', 'IMG_3588',
+    'IMG_3605', 'IMG_3651', 'IMG_3657', 'IMG_3667', 'IMG_3671', 'IMG_3681',
+    'IMG_3683', 'IMG_3698', 'IMG_3702', 'IMG_3714', 'IMG_3738', 'IMG_3746',
+    'IMG_3759', 'IMG_3773', 'IMG_3781', 'IMG_3784', 'IMG_3796',
+  ].map((filename, index) => ({
+    id: `sana-${filename.replace('IMG_', '')}`,
+    model: 'sana' as const,
+    url: `${R2_BASE}/Sana/${filename}.jpg`,
+    title: `Sana · ${toRoman(index + 1)}`,
     tags: ['人像'],
     takenAt: '2025-07-05',
   })),
