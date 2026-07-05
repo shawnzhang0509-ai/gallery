@@ -1,4 +1,5 @@
 import { Photo } from '../types';
+import { EMMA_MEDIA_VERSION, emmaFaceRegions } from './emmaFaceRegions';
 
 const R2_BASE = 'https://pub-8d44826f329546d3945b9abda7ca5ab0.r2.dev';
 
@@ -18,7 +19,7 @@ function toRoman(n: number): string {
  * 摄影作品列表 — 通过 model 字段归入对应 Section
  */
 export const photos: Photo[] = [
-  // ── Emma 系列（Cloudflare R2，已手动打码）──
+  // ── Emma 系列（Cloudflare R2，已手动打码 + 备用遮罩）──
   ...[
     'IMG_3839.jpg',
     'IMG_3842.jpg',
@@ -46,10 +47,13 @@ export const photos: Photo[] = [
   ].map((filename, index) => ({
     id: `emma-${filename.replace(/\.(jpg|JPG)$/i, '').toLowerCase()}`,
     model: 'emma' as const,
-    url: `${R2_BASE}/Emma/${filename}`,
+    url: `${R2_BASE}/Emma/${filename}?v=${EMMA_MEDIA_VERSION}`,
     title: `Emma · ${toRoman(index + 1)}`,
     tags: ['人像'],
     takenAt: '2025-07-05',
+    blurFaces: true,
+    faceRegions: emmaFaceRegions[filename],
+    privacyMask: 'pixelate' as const,
   })),
 
   // ── Maya 系列（Cloudflare R2）──
