@@ -203,6 +203,20 @@ export const photos: Photo[] = [
     takenAt: '2025-07-05',
   })),
 
+  // ── Ada 系列（Cloudflare R2）──
+  ...[
+    'IMG_2552', 'IMG_2554', 'IMG_2562', 'IMG_2564', 'IMG_2566', 'IMG_2569',
+    'IMG_2570', 'IMG_2574', 'IMG_2577', 'IMG_2582', 'IMG_2593', 'IMG_2599',
+    'IMG_2600', 'IMG_2607', 'IMG_2612', 'IMG_2615', 'IMG_2618', 'IMG_2619',
+  ].map((filename, index) => ({
+    id: `ada-${filename.replace('IMG_', '')}`,
+    model: 'ada' as const,
+    url: `${R2_BASE}/Ada/${filename}.jpg`,
+    title: `Ada · ${toRoman(index + 1)}`,
+    tags: ['人像'],
+    takenAt: '2025-07-05',
+  })),
+
   // ── 建筑与风景系列 ──
   {
     id: 'villa-01',
