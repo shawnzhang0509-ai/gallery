@@ -2,6 +2,12 @@ import { Photo } from '../types';
 
 const R2_BASE = 'https://pub-8d44826f329546d3945b9abda7ca5ab0.r2.dev';
 
+const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV', 'XV', 'XVI', 'XVII', 'XVIII', 'XIX', 'XX'];
+
+function toRoman(n: number): string {
+  return ROMAN[n - 1] ?? String(n);
+}
+
 /**
  * 摄影作品列表 — 通过 model 字段归入对应 Section
  */
@@ -77,6 +83,36 @@ export const photos: Photo[] = [
     blurFaces: true,
     faceRegions: [{ left: 25.2, top: 12, width: 30.8, height: 30.8 }],
   },
+
+  // ── Maya 系列（Cloudflare R2）──
+  ...[
+    'IMG_5015',
+    'IMG_5022',
+    'IMG_5029',
+    'IMG_5065',
+    'IMG_5080',
+    'IMG_5083',
+    'IMG_5094',
+    'IMG_5114',
+    'IMG_5137',
+    'IMG_5141',
+    'IMG_5158',
+    'IMG_5179',
+    'IMG_5186',
+    'IMG_5191',
+    'IMG_5196',
+    'IMG_5212',
+    'IMG_5215',
+    'IMG_5222',
+    'IMG_5238',
+  ].map((filename, index) => ({
+    id: `maya-${filename.replace('IMG_', '')}`,
+    model: 'maya' as const,
+    url: `${R2_BASE}/Maya/${filename}.jpg`,
+    title: `Maya · ${toRoman(index + 1)}`,
+    tags: ['人像'],
+    takenAt: '2025-08-16',
+  })),
 
   // ── 建筑与风景系列 ──
   {

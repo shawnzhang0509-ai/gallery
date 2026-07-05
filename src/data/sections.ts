@@ -11,6 +11,12 @@ export const gallerySections: GallerySectionConfig[] = [
     privacyMask: 'pixelate',
   },
   {
+    id: 'section-maya',
+    model: 'maya',
+    title: 'Maya',
+    subtitle: '人像摄影 · 光影与情绪',
+  },
+  {
     id: 'section-architecture',
     model: 'architecture',
     title: '建筑与风景',
