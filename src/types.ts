@@ -18,6 +18,8 @@ export interface Photo {
   blurFaces?: boolean;
   /** 手动指定模糊区域（百分比），比自动检测更精准 */
   faceRegions?: FaceRegion[];
+  /** pixelate = 马赛克，blur = 高斯模糊 */
+  privacyMask?: 'pixelate' | 'blur';
 }
 
 /** 人脸模糊区域，数值为相对图片宽高的百分比 */
@@ -33,8 +35,21 @@ export interface GallerySectionConfig {
   model: string;
   title: string;
   subtitle: string;
+  /** 该系列默认开启隐私遮挡 */
+  blurFaces?: boolean;
+  /** pixelate = 马赛克，blur = 高斯模糊 */
+  privacyMask?: 'pixelate' | 'blur';
 }
 
 export interface GallerySection extends GallerySectionConfig {
   photos: Photo[];
+}
+
+/** 合并 section 级隐私设置到照片 */
+export function resolvePhotoPrivacy(photo: Photo, section: GallerySectionConfig): Photo {
+  return {
+    ...photo,
+    blurFaces: photo.blurFaces ?? section.blurFaces ?? false,
+    privacyMask: photo.privacyMask ?? section.privacyMask,
+  };
 }

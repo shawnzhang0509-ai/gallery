@@ -45,6 +45,7 @@ export const ImageViewer: React.FC<ImageViewerProps> = ({ photo, onClose }) => {
             alt={photo.title}
             blurFaces={photo.blurFaces}
             faceRegions={photo.faceRegions}
+            maskMode={photo.privacyMask ?? 'pixelate'}
             loading="eager"
             wrapperClassName="inline-block max-w-full"
             className="max-h-[70vh] max-w-full object-contain lg:max-h-[85vh]"

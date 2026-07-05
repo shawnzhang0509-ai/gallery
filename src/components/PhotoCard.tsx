@@ -21,7 +21,9 @@ export const PhotoCard: React.FC<PhotoCardProps> = ({ photo, onClick }) => {
         alt={photo.title}
         blurFaces={photo.blurFaces}
         faceRegions={photo.faceRegions}
-        className="w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+        maskMode={photo.privacyMask ?? 'pixelate'}
+        hoverScale
+        className="w-full object-cover"
       />
 
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
