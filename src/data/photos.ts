@@ -143,6 +143,28 @@ export const photos: Photo[] = [
     takenAt: '2025-07-05',
   })),
 
+  // ── Anika 系列（Cloudflare R2）──
+  ...[
+    'IMG_2979.jpg',
+    'IMG_3009.jpg',
+    'IMG_3020.jpg',
+    'IMG_3041.jpg',
+    // IMG_3047.jpg — R2 暂未上传
+    'IMG_3097.jpg',
+    'IMG_3110.jpg',
+    'IMG_3115.jpg',
+    'IMG_3156(1).jpg',
+    'IMG_3202(1).jpg',
+    'IMG_3219.jpg',
+  ].map((filename, index) => ({
+    id: `anika-${filename.replace(/\.(jpg|JPG)$/i, '').toLowerCase()}`,
+    model: 'anika' as const,
+    url: `${R2_BASE}/Anika/${filename}`,
+    title: `Anika · ${toRoman(index + 1)}`,
+    tags: ['人像'],
+    takenAt: '2025-07-05',
+  })),
+
   // ── 建筑与风景系列 ──
   {
     id: 'villa-01',
