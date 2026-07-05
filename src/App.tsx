@@ -71,8 +71,22 @@ export default function App() {
               </h1>
               <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-stone-400 sm:text-base lg:mx-0">
                 {siteConfig.description}
+                <span className="text-stone-500"> · 摄影师 {siteConfig.author}</span>
               </p>
               <p className="mt-2 text-xs text-stone-600">共 {totalPhotos} 幅作品</p>
+
+              <div className="mx-auto mt-8 max-w-xl rounded-lg border border-stone-800 bg-stone-950/50 p-5 text-left lg:mx-0">
+                <p className="text-sm leading-relaxed text-stone-300">{siteConfig.pitch}</p>
+                <p className="mt-3 text-sm leading-relaxed text-amber-200/90">
+                  {siteConfig.sellingPoint}
+                </p>
+                <p className="mt-4 text-sm text-stone-400">
+                  微信联系：
+                  <span className="ml-2 font-medium tracking-wide text-stone-200">
+                    {siteConfig.wechat}
+                  </span>
+                </p>
+              </div>
             </section>
 
             <ModelNav
@@ -99,6 +113,9 @@ export default function App() {
       <footer className="border-t border-stone-800/80 py-10">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <p className="text-sm leading-relaxed text-stone-500">{siteConfig.about}</p>
+          <p className="mt-3 text-sm text-stone-400">
+            微信：<span className="text-stone-200">{siteConfig.wechat}</span>
+          </p>
           <p className="mt-4 text-xs text-stone-600">
             © {new Date().getFullYear()} {siteConfig.author}
           </p>
